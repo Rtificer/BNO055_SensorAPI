@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>bno055_vendor</name>
+  <version>0.0.0</version>
+  <description>Vendor Package for BNO055_SensorAPI Bosch library that also includes minor
+    modification for ease of use</description>
+  <maintainer email="rtificr@gmail.com">Alachie</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
