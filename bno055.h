@@ -284,16 +284,16 @@ typedef unsigned long int u64; /**< used for unsigned 64bit */
 /**\name    BUS READ AND WRITE FUNCTIONS           */
 /***************************************************************/
 #define BNO055_WR_FUNC_PTR       s8 (*bus_write) \
-        (u8, u8, u8 *, u8)
+        (u8, u8, u8 *, u8, void *)
 
 #define BNO055_BUS_WRITE_FUNC(dev_addr, reg_addr, reg_data, wr_len) \
-    bus_write(dev_addr, reg_addr, reg_data, wr_len)
+    bus_write(dev_addr, reg_addr, reg_data, wr_len, p_bno055->userdata)
 
 #define BNO055_RD_FUNC_PTR       s8 \
-    (*bus_read)(u8, u8, u8 *, u8)
+    (*bus_read)(u8, u8, u8 *, u8, void *)
 
 #define BNO055_BUS_READ_FUNC(dev_addr, reg_addr, reg_data, r_len) \
-    bus_read(dev_addr, reg_addr, reg_data, r_len)
+    bus_read(dev_addr, reg_addr, reg_data, r_len, p_bno055->userdata)
 
 #define BNO055_DELAY_RETURN_TYPE void
 
@@ -518,6 +518,7 @@ struct bno055_t
     u8 gyro_rev_id; /**< gyro revision id of bno055 */
     u8 bl_rev_id; /**< boot loader revision id of bno055 */
     u8 dev_addr; /**< i2c device address of bno055 */
+    void *userdata;
     BNO055_WR_FUNC_PTR; /**< bus write function pointer */
     BNO055_RD_FUNC_PTR; /**<bus read function pointer */
     void (*delay_msec)(BNO055_MDELAY_DATA_TYPE); /**< delay function pointer */
